@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MARKY</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            background-image: url('alexia.jpg');
+            background-size: cover;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            height: 100vh; 
+            position: relative; 
+            color: #660d3c;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+        }
+
+        .auth-and-search {
+            display: flex;
+            align-items: center;
+            gap: 20px; 
+        }
+
+        .logo img {
+            width: 250px; 
+            height:auto; 
+        }
+
+        .center-icons {
+            display: flex;
+            align-items: center;
+            gap: 20px; 
+            position: relative; 
+        }
+
+        .center-icons a {
+            text-decoration: none; 
+            position: relative; 
+        }
+
+        .center-icons .fa-shopping-cart,
+        .center-icons .fa-bars {
+            font-size: 24px;
+            color: #660d3c; 
+            cursor: pointer;
+        }
+
+        .cart-counter {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background-color: #660d3c;
+            color: #fff;
+            border-radius: 50%;
+            padding: 4px 8px;
+            font-size: 12px;
+            font-weight: bold;
+            line-height: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .search-container {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            position: relative;
+        }
+
+        .search-bar-container {
+            display: flex;
+            align-items: center;
+            border: 1px solid #660d3c;
+            border-radius: 5px;
+            background-color: #fff;
+            padding: 5px; 
+            width: 300px;
+        }
+
+        .search-bar {
+            padding: 5px;
+            border: none;
+            font-size: 14px;
+            width: 100%;
+            outline: none; 
+        }
+
+        .search-icon {
+            font-size: 16px;
+            color: #660d3c;
+            padding: 5px;
+        }
+
+        .dropdown {
+            display: none;
+            position: absolute;
+            top: 40px;
+            left: 0;
+            background-color: white;
+            border: 1px solid #660d3c;
+            border-radius: 5px;
+            width: 300px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            z-index: 1000;
+        }
+
+        .dropdown.show {
+            display: block;
+        }
+
+        .dropdown-section {
+            padding: 15px;
+        }
+
+        .dropdown-section h4 {
+            margin: 0 0 10px 0;
+            font-size: 14px;
+            color: #660d3c;
+            text-transform: uppercase;
+        }
+
+        .dropdown-section a {
+            display: block;
+            color: #000;
+            text-decoration: none;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+
+        .dropdown-section a:hover {
+            text-decoration: underline;
+        }
+
+        .auth-buttons {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .auth-buttons a {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #660d3c;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            text-decoration: none;
+            transition: transform 0.3s ease; 
+        }
+
+        .auth-buttons a:hover {
+            transform: scale(1.1); 
+            background-color: #69183f; 
+        } 
+
+        .slogan {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            font-size: 18px;
+            color: #660d3c; 
+        }
+
+        .help-icon {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            font-size: 24px;
+            color: #660d3c;
+            background-color: #fff;
+            border: 1px solid #660d3c;
+            border-radius: 50%;
+            padding: 10px;
+            cursor: pointer;
+            text-decoration: none; 
+        }
+
+        .description {
+            position: absolute;
+            top: 50%;
+            left: 10%;
+            transform: translateY(-50%);
+            max-width: 40%;
+            font-size: 18px;
+            line-height: 1.5;
+            color: #000000;
+        }
+
+        .description .brand-name {
+            font-size: 40px;
+            font-weight: bold;
+            color: #660d3c;
+            display: block;
+            margin-bottom: 20px;
+        }
+
+        /* Overlay for blur effect */
+        #overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 100;
+            display: none;
+            backdrop-filter: blur(10px);
+        }
+
+        /* Menu overlay */
+        .menu-overlay {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 300px;
+            height: 100%;
+            background-color: white;
+            box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
+            z-index: 200;
+            transform: translateX(100%);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .menu-overlay.show {
+            transform: translateX(0);
+        }
+
+        .close-btn {
+            font-size: 30px;
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            cursor: pointer;
+        }
+
+        .menu-options {
+            list-style: none;
+            padding: 50px 20px;
+        }
+
+      .menu-options li {
+    margin-bottom: 30px; 
+}
+
+.menu-options a {
+    text-decoration: none;
+    color: black;
+    font-size: 18px;
+    font-weight: bold;
+    position: relative;
+    display: inline-block;
+    padding-bottom: 5px; 
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.menu-options a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 3px;
+    background-color: purple; 
+    bottom: 0;
+    left: 0;
+    transition: width 0.3s ease;
+}
+
+.menu-options a:hover::after {
+    width: 100%;
+}
+
+.menu-options a:hover {
+    transform: scale(1.1); 
+    color: #660d3c; 
+}
+
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <img src="logo2.jpeg" alt="MARKY Logo">
+        </div>
+        <div class="auth-and-search">
+            <div class="search-container">
+                <div class="search-bar-container">
+                    <input type="text" placeholder="Search..." class="search-bar">
+                    <i class="fas fa-search search-icon"></i> 
+                </div>
+                <div class="dropdown" id="searchDropdown">
+                    <div class="dropdown-section">
+                        <h4>Look Trends</h4>
+                        <a href="#">Handbag</a>
+                        <a href="#">Shoes</a>
+                        <a href="#">Belt</a>
+                        <a href="#">Bags</a>
+                    </div>
+                    <div class="dropdown-section">
+                        <h4>Dernières Nouveautés</h4>
+                        <a href="#">Femme</a>
+                        <a href="#">Homme</a>
+                    </div>
+                </div>
+            </div>
+            <div class="center-icons">
+                <a href="panier.html">
+                    <i class="fas fa-shopping-cart"></i> 
+                    <span class="cart-counter">0</span> 
+                </a>
+                <a href="javascript:void(0);" id="openMenu">
+                    <i class="fas fa-bars"></i> 
+                </a>
+            </div>
+            <div class="auth-buttons">
+                <a href="signin.html">Sign In</a>
+                <a href="signup.html">Sign Up</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="description">
+        <span class="brand-name">MARKY</span>
+        Is your ultimate destination for a distinctive shopping experience. We curate a sophisticated selection of high-quality, stylish products that not only meet but exceed your expectations. At MARKY, customer delight is our priority, ensuring that every visit feels as unique and special as the items we offer.
+    </div>
+
+    <div class="slogan">
+        Let's Make Brighter Days
+    </div>
+
+    <a href="aide.html" class="help-icon">
+        <i class="fas fa-question-circle"></i>
+    </a>
+
+    
+    <div id="overlay"></div>
+
+    
+    <div class="menu-overlay" id="menuOverlay">
+        <span class="close-btn" id="closeMenu">&times;</span>
+        <ul class="menu-options">
+            <li><a href="nouveautés.html">New</a></li>
+             <li><a href="homme.html">Men</a></li>
+              <li><a href="femme.html">Women</a></li>
+               <li><a href="enfant.html">Children</a></li>
+                <li><a href="services.html">MARKY Services</a></li>
+
+        </ul>
+    </div>
+
+    <script>
+        const searchBar = document.querySelector('.search-bar');
+        const dropdown = document.getElementById('searchDropdown');
+        const openMenu = document.getElementById('openMenu');
+        const closeMenu = document.getElementById('closeMenu');
+        const menuOverlay = document.getElementById('menuOverlay');
+        const overlay = document.getElementById('overlay');
+
+        searchBar.addEventListener('focus', () => {
+            dropdown.classList.add('show');
+        });
+
+        searchBar.addEventListener('blur', () => {
+            setTimeout(() => dropdown.classList.remove('show'), 200); 
+        });
+
+        openMenu.addEventListener('click', () => {
+            menuOverlay.classList.add('show');
+            overlay.style.display = 'block';
+        });
+
+        closeMenu.addEventListener('click', () => {
+            menuOverlay.classList.remove('show');
+            overlay.style.display = 'none';
+        });
+
+        overlay.addEventListener('click', () => {
+            menuOverlay.classList.remove('show');
+            overlay.style.display = 'none';
+        });
+    </script>
+</body>
+</html>
