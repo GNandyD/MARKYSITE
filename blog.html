@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="blog.css">
+    <title>Blog</title>
+    <style>body
+      {
+          line-height: 1.5;
+          font-size: 16px;
+          background-color: white;
+      }
+      *
+      {
+          margin: 0;
+          padding: 0;
+          outline: none;
+          text-decoration: none;
+          box-sizing: border-box;
+      }
+      ::before,::after
+      {
+          box-sizing: border-box;
+      }
+      .section
+      {
+          background: white;
+          min-height: 100vh;
+          display:block;
+          padding: 0 30px;
+          opacity:1;
+      }
+      .section  .container
+      {
+          padding-top: 60px;
+          padding-bottom: 70px;
+      }
+      .section-title
+      {
+          flex: 0 0 100%;
+          max-width: 100%;
+      }
+      .section-title h2
+      {
+          font-size: 40px; 
+          color: var(--text-black-900);
+          font-weight: 700;
+          position: relative;
+      }
+      .section-title h2::before
+      {
+          content: '';
+          height: 4px;
+          width: 50px;
+          background-color: #39063c;
+          position: absolute;
+          top: 100%;
+          left: 0;
+      }
+      .section-title h2::after
+      {
+          content: '';
+          height: 4px;
+          width: 25px;
+          background-color: #39063c;
+          position: absolute;
+          top: 100%;
+          left: 0;
+          margin-top: 8px;
+      }
+      
+      .padd-15
+      {
+          padding-left: 15px;
+          padding-right: 15px;
+      }
+      
+      .row
+      {
+          display: flex;
+          flex-wrap: wrap;
+          margin-left: -15px;
+          margin-right: -15px;
+          position: relative;
+      }
+      .heading {
+          font-family: "Rakkas" , cursive;
+          text-transform: uppercase;
+          text-align: center;
+          margin: 50px 0px; 
+          color: #39063c;
+      }
+      .aboutUs {
+          display: flex;
+          padding: 30px;
+      }
+      .aboutImg {
+          width: 50%;
+          padding: 10px;
+          text-align: center;
+      }
+      .aboutImg img{
+          height:30vh;
+          padding: 10px;
+          animation: 1s;
+          animation: animation2 2s linear;
+      }
+      .aboutContent{
+          width:60px ;
+          width: 60%;
+          animation: 1s;
+          animation: animation1 2s linear;
+      }
+      .aboutContent p span {
+          color:#39063c;
+          font-size: 2rem;
+          font-family: "Rakkas", cursive;
+      }
+      #popular-destination {
+          padding: 0 10%;
+          margin-bottom: 50px;
+      }
+      #popular-destination .content { 
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(300px,1fr));
+          gap: 32px;
+      }
+      #popular-destination .content .box {
+          overflow: hidden;
+          position: relative;
+          height: 250px;
+          transition: 0.5s;
+      }
+      #popular-destiination .content .box img {
+          height: 100%;
+          width: 100%;
+          object-fit: cover; 
+      }
+      .box .content {
+          position: absolute;
+          top: 0;
+          left: 0;
+          height: 100%;
+          width: 100%;
+          background-color: #090909;
+          text-align: center;
+          align-items: center;
+          transform: translateX(100%);
+          transition: 0.5s; 
+         
+      }
+      .box .content h4 {
+          font-size: 25px;
+          margin-bottom: 10px;
+      }  
+      .box .content p {
+          padding: 2px;
+          font-size: 12px;
+      }  
+      .box .content p:nth-child(3){
+          margin-bottom: 25px;
+      }
+      .box .content a {
+          font-size: 16px;
+          font-weight: 500;
+          padding: 12px 35px;
+          color: white;
+          border-radius: 40px;
+          display: inline-block;
+          white-space: nowrap;
+          background:#b70b67;
+          transition: all 0.3s ease;
+      } 
+         
+      .box:hover {
+          box-shadow: 0 0 10px #39063c;
+          background-color: #39063c;
+          color: #fff;
+      }
+      .box:hover .content {
+          transform: translateX(0);
+      } 
+      .post {
+          display: grid;
+          grid-template-columns: repeat(auto-fit,minmax(280px,auto));
+          justify-content: center;
+          gap: 1.5rem;
+      }
+      .post-box{
+          box-shadow: 0 4px 14px hsl(355deg 25%  15% / 10%);
+          padding: 15px;
+          border-radius: 0.5rem;
+      }
+      .post-img{
+           width: 100%;
+           height: 200px;
+           object-fit: cover;
+           object-position: center;
+           border-radius: 0.5rem;
+      }
+      .category{
+          font-size: 0.9rem;
+          font-weight: 500;
+          text-transform: uppercase;
+          color: #39063c;
+      }
+      .post-title{
+          font-size: 1.3rem;
+          font-weight: 600;
+          color: #39063c;
+          display: -webkit-box;
+          -webkit-line-clamp: 1;
+          -webkit-box-orient:vertical;
+          overflow: hidden;
+      }
+      .post-date{
+          display: flex;
+          font-size: 0.875rem;
+          text-transform: uppercase;
+          font-weight: 400;
+          margin-top: 4px;
+      }
+      .post-description{
+          font-size: 0.9rem;
+          line-height: 1.5rem;
+          margin: 5px 0 10px;
+          display: -webkit-box;
+          -webkit-line-clamp:3 ; 
+          -webkit-box-orient:vertical;
+      }
+      .profile{
+          padding: 50px;
+          display: flex;
+          align-items: center;
+          gap: 10px;
+      }
+      .profile-img {
+          width: 35px;
+          height: 35px;
+          border-radius: 50%;
+          object-fit: cover;
+          object-position: center;
+          border: 2px solid #39063c;
+      }
+      @keyframes animation1{
+          from{
+              transform: translateX(-600px);
+          }
+      }
+      @keyframes animation2{
+          from{
+          transform: translateX(600px);
+          }
+      }  </style>
+</head>
+<body>
+    <section class="contact section">
+            <div class="container">
+                <div class="row">
+                    <div class="section-title  padd-15">
+                        <h2>Blog</h2>
+                    </div>
+
+                    <div class="recentblogs">
+                       <h1 class="heading">About Us</h1>
+                    </div>
+                    <div class="aboutUs" id="about">
+                     <div class="aboutImg">
+                     <img src="marky.JPG" alt="Not found" srcset="">
+            </div>
+            <div class="aboutContent">
+                <p> <span>Groupe MARKY</span> Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                     Minus rem hic modi incidunt laboriosam, cumque expedita distinctio 
+                     et illum ab, ipsa nesciunt nemo! Nostrum commodi dolorem repudiandae aperiam quisquam quo!Loremlorem Lorem ipsum dolor, sit amet consectetur adipisicing elit. Lorem ipsum dolor sit amet consectetur
+                      adipisicing elit. Facilis, fugit repellendus. Culpa nemo quae laborum, quo molestiae nam. Delectus at quisquam iure earum soluta esse consequatur eum mollitia cumque aut. Lorem ipsum dolor sit amet *
+                      consectetur, adipisicing elit. Distinctio, deleniti tempore! Rerum, quas porro similique ad dignissimos natus nemo, minima quasi error culpa modi odio unde? Voluptas veniam sapiente atque?
+                     Ullam officiis in magnam a labore omnis ea itaque quas voluptatum, iste quo facere illum neque dolores natus perferendis est esse aliquid. Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
+                     Delectus accusamus dolorum sunt debitis consequuntur eaque ducimus aspernatur necessitatibus dignissimos minus culpa eum iusto incidunt labore quam, quidem cum cumque quaerat. Lorem ipsum dolor 
+                     sit amet consectetur adipisicing elit.
+                   </p>
+            </div>
+            
+        
+    </section>
+    <section id="popular-destination">
+        <div class="recentblogs">
+            <h1 class="heading">New article</h1>
+        </div>
+       
+        <div class="content">
+            <div class="box"> 
+                <img src="PT.JPG" alt="">
+                <div class="content">
+                    <div>
+                        <h4> Nos Pantalons</h4>
+                        <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit.boss le boss</p>
+                        <p>Lorem ipsum dolor, sit amet consectetur adipisi</p>
+                        <a href="#">Read more</a> 
+                    </div>
+                </div>
+            </div>
+            <div class="box"> 
+                <img src="tshirt.JPG" alt="">
+                <div class="content"> 
+                    <div>
+                        <h4> Nos vetements</h4>
+                        <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                        <p>Lorem ipsum dolor, sit amet consectetur adipisi</p>
+                        <a href="#">Read more</a>
+                    </div>
+                </div>
+            </div>
+            <div class="box"> 
+                <img src="ch.jpg" alt="">
+                <div class="content"> 
+                    <div>
+                        <h4> Nos chaussures</h4>
+                        <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pla</p>
+                        <p>Lorem ipsum dolor, sit amet consectetur adipisi</p>
+                        <a href="#">Read more</a>
+                    </div>
+                </div>
+            </div>
+            <div class="box"> 
+                <img src="SQ.JPG" alt="">
+                <div class="content">
+                    <div>
+                        <h4> Nos casquettes</h4>
+                        <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit.boss le boss</p>
+                        <p>Lorem ipsum dolor, sit amet consectetur adipisi</p>
+                        <a href="#">Read more</a> 
+                    </div>
+                </div>
+            </div>
+            <div class="box"> 
+                <img src="sht.JPG" alt="">
+                <div class="content">
+                    <div>
+                        <h4> Nos shorts</h4>
+                        <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit.boss le boss</p>
+                        <p>Lorem ipsum dolor, sit amet consectetur adipisi</p>
+                        <a href="#">Read more</a> 
+                    </div>
+                </div>
+            </div>
+            <div class="box"> 
+                <img src="montre.jpg" alt="">
+                <div class="content">
+                    <div>
+                        <h4> Nos montres</h4>
+                        <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit.boss le boss</p>
+                        <p>Lorem ipsum dolor, sit amet consectetur adipisi</p>
+                        <a href="#">Read more</a> 
+                    </div>
+                </div>
+            </div>
+        </div>
+
+ </section>
+ <div class="recentblogs">
+    <h1 class="heading">More advice</h1>
+</div>
+ <section class="post container">
+   
+    <div class="post-box">
+        <img src="sht.JPG" alt="" class="post-img">
+        <h2 class="category">Stylisme</h2>
+        <a href="" class="post-title">
+            Quel est votre choix de style patron
+        </a>
+        <span class="post-date">12 Feb 2022</span>
+      <p class="post-description">Lorem ipsum dolor, sit amet
+         consectetur adipisicing e Lorem ipsum dolor sit a Lorem ipsum, 
+        dolor sit amet consectetur adipisicing elit. Ducimus, 
+        iusto nostrum laudantium possimus totam, dolorem quae,</p>
+
+      <div class="profile">
+        <img src="SQ.JPG" alt="" class="profile-img">
+        <span class="profile-name">Giovanni awon</span>
+      </div>
+    </div>
+    <div class="post-box">
+        <img src="sht.JPG" alt="" class="post-img">
+        <h2 class="category">pantalon</h2>
+        <a href="" class="post-title">
+            Quel est votre choix de style patron
+        </a>
+        <span class="post-date">12 Feb 2022</span>
+      <p class="post-description">Lorem ipsum dolor, sit amet consectetur
+         adipisicing e Lorem ipsum dolor sit a Lorem ipsum, 
+        dolor sit amet consectetur adipisicing elit. Ducimus, 
+        iusto nostrum laudantium possimus totam, dolorem quae,</p>
+
+      <div class="profile">
+        <img src="tshirt.JPG" alt="" class="profile-img">
+        <span class="profile-name">Giovanni awon</span>
+      </div>
+    </div>
+    <div class="post-box">
+        <img src="sht.JPG" alt="" class="post-img">
+        <h2 class="category">Costumes</h2>
+        <a href="" class="post-title">
+            Quel est votre choix de style patron
+        </a>
+        <span class="post-date">12 Feb 2022</span>
+      <p class="post-description">Lorem ipsum dolor, sit amet consectetur 
+        adipisicing e Lorem ipsum dolor sit a Lorem ipsum, 
+        dolor sit amet consectetur adipisicing elit. Ducimus, 
+        iusto nostrum laudantium possimus totam, dolorem quae,</p>
+
+      <div class="profile">
+        <img src="PT.JPG" alt="" class="profile-img">
+        <span class="profile-name">Giovanni awon</span>
+      </div>
+    </div>
+    <div class="post-box">
+        <img src="sht.JPG" alt="" class="post-img">
+        <h2 class="category">Nos tshirts</h2>
+        <a href="" class="post-title">
+            Quel est votre choix de style patron
+        </a>
+        <span class="post-date">12 Feb 2022</span>
+      <p class="post-description">Lorem ipsum dolor, sit amet consectetur
+         adipisicing e Lorem ipsum dolor sit a Lorem ipsum, 
+        dolor sit amet consectetur adipisicing elit. Ducimus, 
+        iusto nostrum laudantium possimus totam, dolorem quae,</p>
+
+      <div class="profile">
+        <img src="tshirt.JPG" alt="" class="profile-img">
+        <span class="profile-name">Giovanni awon</span>
+      </div>
+    </div>
+    <div class="post-box">
+        <img src="sht.JPG" alt="" class="post-img">
+        <h2 class="category">Nos stylistes</h2>
+        <a href="" class="post-title">
+            Quel est votre choix de style patron
+        </a>
+        <span class="post-date">12 Feb 2022</span>
+      <p class="post-description">Lorem ipsum dolor, sit amet consectetur
+         adipisicing e Lorem ipsum dolor sit a Lorem ipsum, 
+        dolor sit amet consectetur adipisicing elit. Ducimus, 
+        iusto nostrum laudantium possimus totam, dolorem quae,</p>
+
+      <div class="profile">
+        <img src="tshirt.JPG" alt="" class="profile-img">
+        <span class="profile-name">Giovanni awon</span>
+      </div>
+    </div>
+    <div class="post-box">
+        <img src="sht.JPG" alt="" class="post-img">
+        <h2 class="category">Nos casquettes</h2>
+        <a href="" class="post-title">
+            Quel est votre choix de style patron
+        </a>
+        <span class="post-date">12 Feb 2022</span>
+      <p class="post-description">Lorem ipsum dolor, sit amet consectetur
+         adipisicing e Lorem ipsum dolor sit a Lorem ipsum, 
+        dolor sit amet consectetur adipisicing elit. Ducimus, 
+        iusto nostrum laudantium possimus totam, dolorem quae,</p>
+
+      <div class="profile">
+        <img src="tshirt.JPG" alt="" class="profile-img">
+        <span class="profile-name">Giovanni awon</span>
+      </div>
+    </div>
+    <div class="post-box">
+        <img src="sht.JPG" alt="" class="post-img">
+        <h2 class="category">pantalon</h2>
+        <a href="" class="post-title">
+            Quel est votre choix de style patron
+        </a>
+        <span class="post-date">12 Feb 2022</span>
+      <p class="post-description">Lorem ipsum dolor, sit amet consectetur
+         adipisicing e Lorem ipsum dolor sit a Lorem ipsum, 
+        dolor sit amet consectetur adipisicing elit. Ducimus, 
+        iusto nostrum laudantium possimus totam, dolorem quae,</p>
+
+      <div class="profile">
+        <img src="tshirt.JPG" alt="" class="profile-img">
+        <span class="profile-name">Giovanni awon</span>
+      </div>
+    </div>
+    <div class="post-box">
+        <img src="sht.JPG" alt="" class="post-img">
+        <h2 class="category">LES Costumes</h2>
+        <a href="" class="post-title">
+            Quel est votre choix de style patron
+        </a>
+        <span class="post-date">12 Feb 2022</span>
+      <p class="post-description">Lorem ipsum dolor, sit amet consectetur
+         adipisicing e Lorem ipsum dolor sit a Lorem ipsum, 
+        dolor sit amet consectetur adipisicing elit. Ducimus, 
+        iusto nostrum laudantium possimus totam, dolorem quae,</p>
+
+      <div class="profile">
+        <img src="tshirt.JPG" alt="" class="profile-img">
+        <span class="profile-name">Giovanni awon</span>
+      </div>
+    </div>
+ </section>
+</body>
+</html>

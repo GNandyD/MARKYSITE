@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE-edge">
+    <meta name="viewport"  content="width=device-width,initial-scale=1.0">
+    <title>MARKY-Help</title>
+  
+    <link rel="stylesheet" href="css/skins/color-1.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <style>:root
+
+        { 
+          --bg-black-900:#cacae0;
+          --bg-black-100:#fdf9fc;
+          --bg-black-50:#d8cfdc;
+          --text-black-900:#050505;
+          --text-black-700: #660d3c;
+          --primary-color: #660d3c;
+          --hover-color: #660d3c;
+        }
+        body
+        {
+            line-height: 1.5;
+            font-size: 16px;
+            background-color: white;
+        }
+        *
+        {
+            margin: 0;
+            padding: 0;
+            outline: none;
+            text-decoration: none;
+            box-sizing: border-box;
+        }
+        ::before,::after
+        {
+            box-sizing: border-box;
+        }
+        .section
+        {
+            background: white;
+            min-height: 100vh;
+            display:block;
+            padding: 0 30px;
+            opacity:1;
+        }
+        .hidden
+        {
+            display: none !important;
+        }
+        .section  .container
+        {
+            padding-top: 60px;
+            padding-bottom: 70px;
+        }
+        .section-title
+        {
+            flex: 0 0 100%;
+            max-width: 100%;
+        }
+        .section-title h2
+        {
+            font-size: 40px; 
+            color: #660d3c;
+            font-weight: 700;
+            position: relative;
+        }
+        
+        .padd-15
+        {
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+        
+        .row
+        {
+            display: flex;
+            flex-wrap: wrap;
+            margin-left: -15px;
+            margin-right: -15px;
+            position: relative;
+        }
+        .btn {
+    font-size: 16px;
+    font-weight: 600;
+    padding: 12px 40px; 
+    color: white;
+    background-color: #660d3c; 
+    border-radius: 10px; 
+    display: inline-block;
+    white-space: nowrap;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    font-family: Arial, sans-serif;
+}
+
+.btn:hover {
+    background-color: #4e072f; 
+    transform: translateY(-3px);
+    box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+        .contact-title  
+        {
+            font-family:  Arial, sans-serif;
+            text-transform: uppercase;
+            text-align: center;
+            margin: 50px 0px; 
+            color: #39063c;
+            text-align: center;
+            font-size: 25px;
+            margin-bottom: 20px;
+        }
+        .contact-sub-title
+        {
+            color: rgb(12, 12, 12);
+            text-align: center;
+            font-size: 15px;
+            margin-bottom: 60px;
+        }
+        .contact .contact-info-item
+        {
+            flex: 0 0 25%;  
+            max-width: 25%;
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        .contact .contact-info-item .icon
+        {
+            display: inline-block;
+        }
+        .contact .contact-info-item .icon .fa 
+        {
+            font-size: 25px;
+            color: var(--primary-color);
+        }
+        .contact .contact-info-item  h4
+        {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--text-black-900);
+            text-transform: capitalize;
+            margin: 15px 0 5px;
+        }
+        .contact .contact-info-item p
+        {
+            font-size: 16px;
+            line-height: 25px;
+            color: var(--text-black-700);
+            font-weight: 400; 
+        }
+        .contact .contact-form
+        {
+            flex: 0 0 100% ;
+            max-width: 100%;
+        }
+        .contact .contact-form .col-6
+        {
+            flex: 0 0 50% ;
+            max-width: 50%;
+        }
+        .contact .contact-form .col-12  
+        {
+            flex: 0 0 100% ;
+            max-width: 100%;
+        }
+        .contact .contact-form .form-item
+        {
+            margin-bottom: 30px;
+        }
+        .contact .contact-form .form-item .form-control
+        {
+            width: 100%;
+            height: 50px;
+            border-radius: 25px;
+            background: var(--bg-black-100);
+            border: 1px solid var(--bg-black-50);
+            padding: 10px 25px;
+            font-size: 16px;
+            color: black;
+            transition: all 0.3s ease;
+        } 
+        .contact .contact-form .form-item .form-control:focus
+        {
+            box-shadow:  0 0 20px rgba(48, 46, 77, 0.15);
+        }
+        .contact .contact-form .form-item textarea.form-control
+        {
+            height: 140px;
+        }
+        .contact .contact-form .btn
+        {
+            height: 50px;
+            padding:  0 50px;
+        } 
+        @media (max-width:1199px)
+        {
+            .aside
+            {
+                left: -270px;
+            }
+            .main-content
+            {
+                padding-left: 0;
+            }
+        }
+        @media (max-width:991px)
+        {
+            .contact .contact-info-item
+            {
+                flex: 0 0 50%;
+                max-width: 50%;
+            }
+        }
+        @media (max-width:767px)
+        {
+            .contact .contact-form .col-6,
+            .contact .contact-info-item
+            {
+                flex: 0 0 100%;
+                max-width: 100%;
+            }
+            
+        }</style>
+</head>
+<body>
+    <div class="main-content">
+        <section class="contact section ">
+            <div class="container">
+                <div class="row">
+                    <div class="section-title  padd-15">
+                        <h2>Contact Us</h2>
+                    </div>
+                </div>
+                <h3 class="contact-title padd-15">Have you a request ???</h3>
+                
+                <div class="row">
+                    <div class="contact-info-item padd-15">
+                        <div class="icon"><i class="fa fa-phone"></i> </div>
+                        <h4>Number</h4>
+                        <p>+229 62923922</p>
+                    </div>
+                    <div class="contact-info-item padd-15">
+                        <div class="icon"><i class="fa fa-map-marker-alt"></i> </div>
+                        <h4>Office</h4>
+                        <p>Porto novo</p>
+                    </div>
+                    <div class="contact-info-item padd-15">
+                        <div class="icon"><i class="fa fa-envelope"></i> </div>
+                        <h4>Email</h4>
+                        <p>Marky@gmail.com</p>
+                    </div>
+                    <div class="contact-info-item padd-15">
+                        <div class="icon"><i class="fa fa-globe-europe"></i> </div>
+                        <h4>Website</h4>
+                        <p>www.marky.com</p>
+                </div>
+            </div>
+            <h3 class="contact-title padd-15">Email Us</h3>
+           
+            <div class="row">
+                <div class="contact-form padd-15">
+                    <div class="row">
+                        <div class="form-item col-6 padd-15">
+                            <div class="form-groupe">
+                                <input type="text" class="form-control" placeholder="Name">
+                            </div>
+                        </div>
+                        <div class="form-item col-6 padd-15">
+                            <div class="form-groupe">
+                                <input type="email" class="form-control" placeholder="Email Address">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-item col-12 padd-15">
+                            <div class="form-groupe">
+                                <input type="text" class="form-control" placeholder="Subject">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-item col-12 padd-15">
+                            <div class="form-groupe">
+                             <textarea name=""  class="form-control" id="" placeholder="Message"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-item col-12 padd-15">
+                          <button type="submit" class="btn">Send</button>
+                        </div>
+                    </div>
+                </div>
+            </div>  
+        </section>
+    </div>
+</body>
+</html>
